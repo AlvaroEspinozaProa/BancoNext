@@ -1,0 +1,182 @@
+/* ==========================================
+   BANCO DINO
+   NAVBAR
+========================================== */
+
+.navbar{
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 75px;
+
+    background: #ffffff;
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+
+    box-shadow: 0 -5px 15px rgba(0,0,0,.10);
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    z-index: 999;
+
+}
+
+
+
+/* BOTONES */
+
+.navbar button{
+
+    background: transparent;
+
+    border: none;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #666;
+
+    width: 70px;
+
+    height: 65px;
+
+    transition: .3s;
+
+}
+
+
+
+/* ICONOS */
+
+.navbar button i{
+
+    font-size: 22px;
+
+}
+
+
+
+/* EMOJIS */
+
+.navbar button{
+
+    font-size: 22px;
+
+}
+
+
+
+/* TEXTO */
+
+.navbar button span{
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+
+/* EFECTO HOVER */
+
+.navbar button:hover{
+
+    color: var(--color-principal);
+
+    transform: translateY(-5px);
+
+}
+
+
+
+/* BOTÓN ACTIVO */
+
+.navbar button.active{
+
+    color: var(--color-principal);
+
+}
+
+
+
+/* EFECTO AL PRESIONAR */
+
+.navbar button:active{
+
+    transform: scale(.95);
+
+}
+
+
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    .navbar{
+
+        height: 70px;
+
+    }
+
+    .navbar button{
+
+        width: 60px;
+
+        height: 60px;
+
+    }
+
+    .navbar button{
+
+        font-size: 20px;
+
+    }
+
+    .navbar button span{
+
+        font-size: 11px;
+
+    }
+
+}
+
+
+
+/* COMPUTADORA */
+
+@media (min-width:1200px){
+
+    .navbar{
+
+        max-width: 1200px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        border-radius: 20px 20px 0 0;
+
+    }
+
+}
