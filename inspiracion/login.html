@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Ingresar</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <style>
+        /* Pantalla de acceso de referencia; no valida ni guarda datos. */
+        :root { --ink:#10271f; --muted:#6a7972; --line:#dfebe5; --navy:#0d2735; --green:#1ca96c; --bg:#eef5f2; }
+        * { box-sizing:border-box; } body { min-width:900px; min-height:100vh; margin:0; background:var(--bg); color:var(--ink); font-family:"Manrope","Segoe UI",system-ui,sans-serif; }
+        .page { display:grid; grid-template-columns:1.05fr .95fr; min-height:100vh; }
+        .welcome { position:relative; overflow:hidden; padding:50px clamp(45px,7vw,110px); background:linear-gradient(145deg,#0c2735,#145b58 68%,#1ca96c); color:#fff; }
+        .brand img { display:block; width:176px; }.welcome-copy { position:relative; z-index:2; max-width:460px; margin-top:15vh; }.eyebrow { margin:0 0 11px; color:#bde8d8; font-size:11px; font-weight:800; letter-spacing:1.4px; }.welcome h1 { margin:0; font-size:44px; line-height:1.08; letter-spacing:-2px; }.welcome h1 span { color:#8ff0bd; }.welcome-copy > p:not(.eyebrow) { margin:17px 0 0; color:#c5ebdd; font-size:15px; line-height:1.65; }.points { display:grid; gap:12px; margin-top:31px; padding:0; list-style:none; color:#d2f2e5; font-size:12px; }.points li { display:flex; align-items:center; gap:9px; }.points b { display:grid; width:20px; height:20px; place-items:center; border-radius:50%; background:rgba(124,235,176,.18); color:#91f3bd; font-size:11px; }.dino { position:absolute; z-index:1; right:-30px; bottom:-70px; width:min(49vw,545px); filter:drop-shadow(0 21px 14px rgba(0,20,18,.3)); }.orbit { position:absolute; z-index:0; right:-100px; bottom:80px; width:460px; height:460px; border:1px solid rgba(142,239,190,.18); border-radius:50%; }.orbit::after { position:absolute; top:64px; left:58px; width:16px; height:16px; border-radius:50%; background:#94f1bd; box-shadow:0 0 0 8px rgba(148,241,189,.12); content:""; }
+        .access { display:grid; place-items:center; padding:48px; }.form-card { width:min(100%,430px); }.form-card h2 { margin:0; font-size:30px; letter-spacing:-1.2px; }.form-card > p { margin:9px 0 27px; color:var(--muted); font-size:13px; }.tabs { display:grid; grid-template-columns:1fr 1fr; margin-bottom:24px; padding:4px; border-radius:12px; background:#e3eee9; }.tab { height:37px; border:0; border-radius:9px; background:transparent; color:#708078; font-size:12px; font-weight:800; }.tab.active { background:#fff; color:#168f59; box-shadow:0 3px 8px rgba(24,68,48,.08); }.form { display:none; }.form.active { display:grid; gap:15px; }.field { display:grid; gap:7px; }.field label { color:#334a40; font-size:12px; font-weight:750; }.field input { width:100%; height:51px; padding:0 14px; border:1px solid #cfddd6; border-radius:12px; outline-color:#55ca8b; background:#fff; color:var(--ink); font:inherit; font-size:13px; }.password-row { display:flex; justify-content:space-between; align-items:center; }.password-row a,.form-note a { color:#15945b; text-decoration:none; font-size:11px; font-weight:750; }.checkbox { display:flex; gap:8px; align-items:center; color:#66776f; font-size:11px; }.checkbox input { accent-color:var(--green); }.submit { height:53px; margin-top:4px; border:0; border-radius:13px; background:linear-gradient(105deg,#159b61,#36c77f); color:#fff; font:inherit; font-size:13px; font-weight:800; box-shadow:0 11px 19px rgba(31,174,114,.22); cursor:pointer; }.form-note { margin:2px 0 0; color:#819189; font-size:10px; line-height:1.5; text-align:center; }.demo { display:flex; gap:9px; align-items:flex-start; margin-top:23px; padding:13px; border-radius:12px; background:#e7f8ed; color:#42735b; font-size:10px; line-height:1.5; }.demo b { color:#15945b; font-size:13px; }
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="welcome">
+            <a class="brand" href="login.html"><img src="assets/logo-dinbank.svg" alt="DinBank"></a>
+            <div class="welcome-copy"><p class="eyebrow">TU PLATA, A TU RITMO</p><h1>Organizá hoy.<br><span>Lográ mañana.</span></h1><p>Una maqueta de referencia para imaginar una experiencia bancaria simple, clara y cercana.</p><ul class="points"><li><b>✓</b> Movimientos fáciles de entender</li><li><b>✓</b> Metas para tus proyectos</li><li><b>✓</b> Ahorro que podés seguir</li></ul></div>
+            <div class="orbit"></div><img class="dino" src="assets/dino-login.png" alt="Dino de DinBank dando la bienvenida">
+        </section>
+        <main class="access">
+            <section class="form-card">
+                <h2>Hola, qué bueno verte.</h2><p>Ingresá para recorrer la maqueta de DinBank.</p>
+                <div class="tabs" role="tablist" aria-label="Acceso a DinBank"><button class="tab active" type="button" data-form="login" role="tab" aria-selected="true">Ingresar</button><button class="tab" type="button" data-form="register" role="tab" aria-selected="false">Crear cuenta</button></div>
+                <form class="form active" id="login" aria-label="Formulario de ingreso de muestra"><div class="field"><label for="email">Email o usuario</label><input id="email" type="email" placeholder="nombre@email.com" required></div><div class="field"><div class="password-row"><label for="password">Contraseña</label><a href="#aviso">¿La olvidaste?</a></div><input id="password" type="password" placeholder="••••••••" required></div><label class="checkbox"><input type="checkbox"> Recordarme en este equipo</label><button class="submit" type="submit">Ingresar a la maqueta →</button><p class="form-note">Al ingresar se abre una demostración visual, sin datos reales.</p></form>
+                <form class="form" id="register" aria-label="Formulario de registro de muestra"><div class="field"><label for="name">Nombre</label><input id="name" type="text" placeholder="Cómo te llamás" required></div><div class="field"><label for="register-email">Email</label><input id="register-email" type="email" placeholder="nombre@email.com" required></div><div class="field"><label for="register-password">Elegí una contraseña</label><input id="register-password" type="password" placeholder="Mínimo 8 caracteres" required></div><label class="checkbox"><input type="checkbox" required> Acepto los términos de muestra</label><button class="submit" type="submit">Crear cuenta de muestra →</button><p class="form-note">No se crea ninguna cuenta: es solo una pantalla visual.</p></form>
+                <p id="aviso" class="demo"><b>✦</b><span>Esta pantalla no tiene login real, base de datos ni registro. Los botones solo llevan al recorrido de inspiración.</span></p>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+        const tabs = document.querySelectorAll(".tab");
+        const forms = document.querySelectorAll(".form");
+        tabs.forEach((tab) => tab.addEventListener("click", () => { tabs.forEach((item) => { item.classList.toggle("active", item === tab); item.setAttribute("aria-selected", item === tab); }); forms.forEach((form) => form.classList.toggle("active", form.id === tab.dataset.form)); }));
+        forms.forEach((form) => form.addEventListener("submit", (event) => { event.preventDefault(); window.location.href = "index.html"; }));
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { gsap.timeline({defaults:{ease:"power3.out"}}).from(".brand,.welcome-copy",{x:-18,opacity:0,stagger:.12,duration:.55}).from(".dino",{x:26,opacity:0,duration:.65},"-=.38").from(".form-card",{y:22,opacity:0,duration:.55},"-=.45"); gsap.to(".dino",{rotation:1.2,x:3,scale:1.018,transformOrigin:"50% 90%",duration:2.8,repeat:-1,yoyo:true,ease:"sine.inOut"}); }
+    </script>
+</body>
+</html>

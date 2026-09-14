@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Maqueta de inspiración</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <style>
+        /* Puerta de entrada de la maqueta de inspiración. */
+        :root { --ink:#10271f; --navy:#0d2735; --green:#1ca96c; --soft:#eff6f3; }
+        * { box-sizing:border-box; }
+        body { min-width:900px; margin:0; color:var(--ink); background:var(--soft); font-family:"Manrope","Segoe UI",system-ui,sans-serif; }
+        main { width:min(1080px,calc(100% - 80px)); margin:0 auto; padding:56px 0 70px; }
+        .brand img { display:block; width:177px; }
+        .hero { position:relative; min-height:270px; overflow:hidden; margin-top:35px; padding:46px 360px 38px 45px; border-radius:27px; background:linear-gradient(120deg,#123a51,#176663 62%,#1baa70); color:#fff; box-shadow:0 19px 38px rgba(13,39,53,.16); }
+        .eyebrow { margin:0 0 9px; color:#bfe8d9; font-size:11px; font-weight:800; letter-spacing:1.4px; }
+        h1 { max-width:530px; margin:0; font-size:37px; line-height:1.1; letter-spacing:-1.6px; }
+        .hero > p:not(.eyebrow) { max-width:500px; margin:14px 0 0; color:#c8ece0; font-size:14px; line-height:1.55; }
+        .hero img { position:absolute; right:20px; bottom:-90px; width:320px; filter:drop-shadow(0 18px 10px rgba(0,28,25,.25)); }
+        .section-title { margin:37px 0 17px; } .section-title h2 { margin:0; font-size:22px; letter-spacing:-.7px; } .section-title p { margin:7px 0 0; color:#6b7974; font-size:13px; }
+        .screens { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+        .screen-link { display:grid; min-height:159px; align-content:space-between; padding:18px; border:1px solid #deebe5; border-radius:19px; background:#fff; color:inherit; text-decoration:none; box-shadow:0 9px 20px rgba(25,59,45,.04); transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
+        .screen-link:hover,.screen-link:focus-visible { transform:translateY(-5px); border-color:#9fe1bf; box-shadow:0 15px 26px rgba(25,59,45,.1); outline:none; }
+        .icon { display:grid; width:40px; height:40px; place-items:center; border-radius:12px; background:#e4f8ec; color:#14945b; font-size:19px; font-weight:800; }.screen-link:nth-child(2) .icon{background:#e6f1fc;color:#4080b8}.screen-link:nth-child(3) .icon{background:#e9f8ec;color:#17945b}.screen-link:nth-child(4) .icon{background:#eee9fd;color:#7158c5}.screen-link:nth-child(5) .icon{background:#fff0df;color:#b27335}
+        .screen-link strong { display:block; font-size:14px; }.screen-link small { display:block; margin-top:4px; color:#718078; font-size:10px; line-height:1.35; }.arrow { color:#16945a; font-size:18px; font-weight:800; }
+        .note { display:flex; align-items:center; gap:11px; margin-top:28px; padding:15px 18px; border-radius:14px; background:#dff5e8; color:#38715a; font-size:12px; }.note b { color:#15945b; }
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+    </style>
+</head>
+<body>
+    <main>
+        <a class="brand" href="index.html"><img src="assets/logo-dinbank.svg" alt="DinBank"></a>
+        <section class="hero">
+            <p class="eyebrow">MAQUETA DE INSPIRACIÓN</p>
+            <h1>Un recorrido visual para imaginar el próximo DinBank.</h1>
+            <p>Estas pantallas son una referencia independiente. Elegí una para recorrer las ideas de diseño y animación.</p>
+            <img src="assets/dino-dinbank.png" alt="Dino saludando">
+        </section>
+        <section class="section-title"><h2>Elegí una pantalla</h2><p>Todos los datos son de ejemplo y no hay operaciones reales.</p></section>
+        <nav class="screens" aria-label="Pantallas de inspiración">
+            <a class="screen-link" href="login.html"><span class="icon">⌁</span><span><strong>Ingresar / Crear cuenta</strong><small>Acceso de muestra a DinBank.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="dashboard.html"><span class="icon">⌂</span><span><strong>Inicio</strong><small>Saldo, ahorro y actividad.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="transferir.html"><span class="icon">⇄</span><span><strong>Transferir</strong><small>Contacto, monto y resumen.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="ahorrar.html"><span class="icon">↗</span><span><strong>Ahorrar</strong><small>Proyección y plan mensual.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="metas.html"><span class="icon">◎</span><span><strong>Mis metas</strong><small>Proyectos y avances.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="movimientos.html"><span class="icon">⌁</span><span><strong>Movimientos</strong><small>Ingresos y gastos.</small></span><span class="arrow">→</span></a>
+            <a class="screen-link" href="configuracion.html"><span class="icon">⚙</span><span><strong>Configuración</strong><small>Perfil, seguridad y avisos.</small></span><span class="arrow">→</span></a>
+        </nav>
+        <p class="note"><b>Cómo abrirla:</b> hacé doble clic en este archivo para verlo en el navegador.</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script>
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            gsap.timeline({defaults:{ease:"power3.out"}}).from(".brand",{y:-12,opacity:0,duration:.4}).from(".hero",{y:22,opacity:0,duration:.55},"-=.15").from(".screens > *",{y:16,opacity:0,stagger:.08,duration:.4},"-=.22");
+            gsap.to(".hero img",{rotation:1.2,x:3,scale:1.018,transformOrigin:"50% 90%",duration:2.8,repeat:-1,yoyo:true,ease:"sine.inOut"});
+        }
+    </script>
+</body>
+</html>

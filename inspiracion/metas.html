@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Mis metas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="metas.css">
+    <link rel="stylesheet" href="plantas.css">
+    <style>body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }</style>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación de ejemplo">
+            <a class="brand" href="dashboard.html"><img src="assets/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item" href="transferir.html">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item active" href="#metas">◎ <span>Mis metas</span></a>
+                <a class="menu-item" href="movimientos.html">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="metas" class="main-content">
+            <header class="topbar"><div><p class="eyebrow">ORGANIZÁ TUS SUEÑOS</p><h1>Mis metas</h1><p>Cada aporte te acerca un poco más.</p></div><div class="profile"><button type="button" class="bell" aria-label="Notificaciones">♧</button><div class="avatar">A</div></div></header>
+            <section class="goal-hero card">
+                <div class="hero-copy"><p class="eyebrow">RESUMEN DEL MES</p><h2>Tenés <span>3 metas</span><br>en movimiento.</h2><p>Este mes ya separaste $ 18.000 para tus proyectos.</p><div class="hero-stats"><span><strong>58%</strong>Promedio de avance</span><span><strong>$ 165.500</strong>Ahorrados en total</span></div></div>
+                <div class="hero-plant"><div class="sparkle one">✦</div><div class="sparkle two">✦</div><img class="plant-image" src="assets/planta-ahorro.svg" alt="Planta que representa el crecimiento de la meta"></div>
+                <img src="assets/dino-metas.png" class="dino-hero" alt="Dino celebrando las metas de ahorro">
+            </section>
+            <section class="section-bar"><div><p class="eyebrow">TUS PROYECTOS</p><h2>Metas activas</h2></div><button type="button" class="new-goal">＋ Crear nueva meta</button></section>
+            <section class="goal-grid">
+                <article class="goal-card card featured"><div class="goal-top"><span class="goal-icon computer">⌘</span><button type="button">•••</button></div><h3>Mi notebook nueva</h3><p>Para estudiar y crear proyectos.</p><div class="goal-money"><span>$ 86.500 <small>ahorrados</small></span><strong>58%</strong></div><div class="progress"><span style="width:58%"></span></div><div class="goal-footer"><span>Meta: $ 150.000</span><button type="button">Aportar <b>→</b></button></div></article>
+                <article class="goal-card card"><div class="goal-top"><span class="goal-icon trip">⌁</span><button type="button">•••</button></div><h3>Viaje con amigos</h3><p>Escapada de verano a la costa.</p><div class="goal-money"><span>$ 48.000 <small>ahorrados</small></span><strong>32%</strong></div><div class="progress violet"><span style="width:32%"></span></div><div class="goal-footer"><span>Meta: $ 150.000</span><button type="button">Aportar <b>→</b></button></div></article>
+                <article class="goal-card card"><div class="goal-top"><span class="goal-icon course">✦</span><button type="button">•••</button></div><h3>Curso de diseño</h3><p>Aprender algo nuevo este año.</p><div class="goal-money"><span>$ 31.000 <small>ahorrados</small></span><strong>79%</strong></div><div class="progress blue"><span style="width:79%"></span></div><div class="goal-footer"><span>Meta: $ 39.000</span><button type="button">Aportar <b>→</b></button></div></article>
+            </section>
+            <section class="bottom-grid"><article class="suggestion card"><span class="suggestion-icon">✦</span><div><p class="eyebrow">SUGERENCIA DE DINO</p><h2>Tu meta de notebook está cerca</h2><p>Con un aporte de $ 12.500 este mes, llegarías al 66%.</p><button type="button">Sumar aporte <span>→</span></button></div><img src="assets/dino-metas.png" alt="Dino celebrando una meta"></article><article class="new-card card"><p class="eyebrow">PRÓXIMO SUEÑO</p><h2>¿Qué querés lograr después?</h2><p>Crear una meta te ayuda a separar tu plata con una intención.</p><button type="button">＋ Crear una meta</button></article></section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="animaciones.js"></script>
+</body>
+</html>
