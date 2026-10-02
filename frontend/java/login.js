@@ -21,9 +21,12 @@ function iniciarLogin(){
     const checkboxMostrar = document.getElementById("mostrarPassword");
     const password = document.getElementById("password");
 
-    if(formulario){
-        formulario.addEventListener("submit", validarLogin);
+    // Este archivo también se carga en el dashboard, donde no existe el formulario.
+    if (!formulario || !checkboxMostrar || !password) {
+        return;
     }
+
+    formulario.addEventListener("submit", validarLogin);
 
     checkboxMostrar.addEventListener("change", function(){
 
@@ -43,28 +46,41 @@ function iniciarLogin(){
    VALIDAR LOGIN
 =========================== */
 
-function validarLogin(event) {
+async function validarLogin(event) {
 
     event.preventDefault();
 
     const usuario = document.getElementById("usuario").value.trim();
-    const contraseña = document.getElementById("password").value.trim();
+    const contrasena = document.getElementById("password").value;
+    const botonIngresar = event.currentTarget.querySelector('button[type="submit"]');
 
-    const usuarioCorrecto = "ana";
-    const contraseñaCorrecta = "dino123";
+    if (!usuario || !contrasena) {
+        alert("Ingresá tu usuario o email y tu contraseña.");
+        return;
+    }
 
-    if (usuario === usuarioCorrecto && contraseña === contraseñaCorrecta) {
+    botonIngresar.disabled = true;
 
-        // Guardamos el nombre que escribió el usuario
-        localStorage.setItem("usuario", usuario);
+    try {
+        const respuesta = await fetch("../bd/login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "same-origin",
+            body: JSON.stringify({ usuario, contrasena })
+        });
+        const datos = await respuesta.json();
 
-        // Vamos al dashboard
-        window.location.href = "dashboard.html";
+        if (!respuesta.ok) {
+            throw new Error(datos.error || "No se pudo iniciar sesión.");
+        }
 
-    } else {
-
-        alert("Usuario o contraseña incorrectos.");
-
+        // Solo se conserva el nombre para mostrarlo; la autenticación vive en PHP.
+        localStorage.setItem("usuario", datos.usuario.nombre);
+        window.location.assign("dashboard.html");
+    } catch (error) {
+        alert(error.message || "No se pudo conectar con el servidor.");
+    } finally {
+        botonIngresar.disabled = false;
     }
 
 }

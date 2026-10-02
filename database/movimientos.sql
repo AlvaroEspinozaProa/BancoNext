@@ -22,6 +22,12 @@ SET time_zone = "+00:00";
 -- Base de datos: `bd_bancodino`
 --
 
+CREATE DATABASE IF NOT EXISTS `bd_bancodino`
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+
+USE `bd_bancodino`;
+
 -- --------------------------------------------------------
 
 --
@@ -29,10 +35,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movimientos` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `Monto` int(255) NOT NULL,
   `Destinatario` text NOT NULL,
   `Fecha` date NOT NULL,
-  `Motivo` text NOT NULL
+  `Motivo` text NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 

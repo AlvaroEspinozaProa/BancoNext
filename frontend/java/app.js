@@ -8,13 +8,45 @@ document.addEventListener("DOMContentLoaded", iniciarAplicacion);
 
 /* INICIAR LA APP */
 
-function iniciarAplicacion(){
+async function iniciarAplicacion(){
 
     console.log("🦖 BancoDino iniciado correctamente.");
+
+    const usuario = await obtenerSesion();
+
+    if (!usuario) {
+        window.location.replace("index.html");
+        return;
+    }
+
+    // El servidor confirma qué usuario inició sesión antes de mostrar el dashboard.
+    localStorage.setItem("usuario", usuario.nombre);
 
     cargarUsuario();
 
     mostrarFecha();
+
+}
+
+/* COMPROBAR LA SESIÓN DEL SERVIDOR */
+
+async function obtenerSesion(){
+
+    try {
+        const respuesta = await fetch("../bd/sesion.php", {
+            credentials: "same-origin"
+        });
+
+        if (!respuesta.ok) {
+            return null;
+        }
+
+        const datos = await respuesta.json();
+        return datos.usuario;
+    } catch (error) {
+        console.error("No se pudo comprobar la sesión:", error);
+        return null;
+    }
 
 }
 
