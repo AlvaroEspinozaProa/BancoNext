@@ -1,0 +1,5 @@
+/* Posiciones compartidas para la planta de ahorro vectorial. */
+.plant-image { display:block; transform-origin:50% 100%; }
+.plant-scene .plant-image { position:absolute; left:50%; bottom:-7px; width:142px; transform:translateX(-50%); }
+.hero-art .plant-image { position:absolute; z-index:2; left:56px; bottom:-7px; width:143px; }
+.hero-plant .plant-image { position:absolute; left:27px; bottom:-2px; width:156px; }

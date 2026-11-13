@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Transferir dinero</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/transferir.css">
+    <style>body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }</style>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación de ejemplo">
+            <a class="brand" href="dashboard.html"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item active" href="#transferir">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item" href="metas.html">◎ <span>Mis metas</span></a>
+                <a class="menu-item" href="movimientos.html">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="transferir" class="main-content">
+            <header class="topbar">
+                <div>
+                    <a class="back-link" href="dashboard.html">← Volver al inicio</a>
+                    <h1>Transferir dinero</h1>
+                    <p>Mandá plata de forma simple y segura.</p>
+                </div>
+                <div class="profile"><button type="button" class="bell" aria-label="Notificaciones">♧</button><div class="avatar">A</div></div>
+            </header>
+
+            <section class="transfer-layout">
+                <form class="transfer-form card" aria-label="Formulario de transferencia de ejemplo">
+                    <div class="form-heading"><div><p class="eyebrow">NUEVA TRANSFERENCIA</p><h2>¿A quién le vas a enviar?</h2></div><span class="step">Paso 1 de 2</span></div>
+
+                    <label class="field-label" for="destinatario">Alias, CBU o CVU</label>
+                    <div class="search-field"><span>⌕</span><input id="destinatario" type="text" placeholder="Ej: SOL.NARANJA.DINO" value="SOL.NARANJA.DINO"><button type="button" aria-label="Limpiar destinatario">×</button></div>
+
+                    <div id="contactos" class="recipient-card">
+                        <div class="recipient-avatar">SN</div>
+                        <div><strong>Sol Naranja</strong><small>Alias: SOL.NARANJA.DINO</small></div>
+                        <span class="verified">✓ Verificado</span>
+                    </div>
+
+                    <div class="contacts-heading"><span>Contactos recientes</span><button type="button">Ver todos</button></div>
+                    <div class="contact-list">
+                        <button class="contact" type="button"><b class="pink">ML</b><span>Martín López<small>martin.lopez</small></span></button>
+                        <button class="contact" type="button"><b class="purple">CP</b><span>Carla Pérez<small>carla.perez</small></span></button>
+                        <button class="contact" type="button"><b class="orange">JT</b><span>Juan Torres<small>juan.torres</small></span></button>
+                    </div>
+
+                    <div class="separator"></div>
+                    <div class="amount-row"><div><label class="field-label" for="monto">Monto a transferir</label><div class="amount-field"><span>$</span><input id="monto" type="text" value="12.500"><em>ARS</em></div></div><span class="available">Disponible<br><strong>$ 150.000</strong></span></div>
+                    <label class="field-label" for="concepto">Concepto <span>Opcional</span></label>
+                    <input id="concepto" class="concept-field" type="text" placeholder="Ej: Cena del sábado">
+                    <button class="continue-button" type="button">Continuar <span>→</span></button>
+                    <p class="demo-note">Esta es una pantalla de muestra: el botón no realiza transferencias.</p>
+                </form>
+
+                <aside class="summary-column">
+                    <section class="summary-card card">
+                        <p class="eyebrow">RESUMEN</p>
+                        <div class="summary-recipient"><div class="recipient-avatar large">SN</div><span>Le enviás a<strong>Sol Naranja</strong></span></div>
+                        <div class="summary-amount"><span>Monto</span><strong>$ 12.500</strong></div>
+                        <div class="summary-line"><span>Cuenta de origen</span><strong>Cuenta principal<br><small>•••• 4821</small></strong></div>
+                        <div class="summary-line"><span>Costo de transferencia</span><strong class="free">Gratis</strong></div>
+                        <div class="summary-total"><span>Total a enviar</span><strong>$ 12.500</strong></div>
+                    </section>
+                    <section class="safe-card">
+                        <img src="../assets/illustrations/dino-transferir.png" alt="Dino ayudando a enviar una transferencia">
+                        <div><strong>Transferencias seguras</strong><span>Revisá el alias antes de confirmar.</span></div>
+                    </section>
+                </aside>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>

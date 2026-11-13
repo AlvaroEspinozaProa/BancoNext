@@ -1,0 +1,25 @@
+<!-- Planta vectorial de referencia para representar el crecimiento del ahorro. -->
+<svg viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Planta de ahorro</title>
+  <desc id="desc">Una planta verde creciendo en una maceta azul.</desc>
+  <defs>
+    <linearGradient id="pot" x1="45" y1="170" x2="175" y2="251" gradientUnits="userSpaceOnUse"><stop stop-color="#1C9A82"/><stop offset="1" stop-color="#0D5F63"/></linearGradient>
+    <linearGradient id="leaf" x1="80" y1="62" x2="144" y2="154" gradientUnits="userSpaceOnUse"><stop stop-color="#B0F68A"/><stop offset="1" stop-color="#31C77C"/></linearGradient>
+    <filter id="shadow" x="28" y="156" width="164" height="104" filterUnits="userSpaceOnUse"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#073B3B" flood-opacity=".2"/></filter>
+  </defs>
+  <ellipse cx="110" cy="246" rx="67" ry="10" fill="#0C4E50" fill-opacity=".18"/>
+  <g filter="url(#shadow)">
+    <path d="M46 180C46 168.954 54.954 160 66 160H154C165.046 160 174 168.954 174 180L160 237C157.7 246.2 149.43 252 139.95 252H80.05C70.57 252 62.3 246.2 60 237L46 180Z" fill="url(#pot)"/>
+    <path d="M42 159C42 151.82 47.82 146 55 146H165C172.18 146 178 151.82 178 159V169C178 176.18 172.18 182 165 182H55C47.82 182 42 176.18 42 169V159Z" fill="#39B995"/>
+    <path d="M58 164H162" stroke="#A5F2D1" stroke-opacity=".6" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path d="M110 151V74" stroke="#38B86E" stroke-width="9" stroke-linecap="round"/>
+  <path d="M108 110C77 110 59 87 61 55C92 55 110 77 108 110Z" fill="url(#leaf)"/>
+  <path d="M113 127C145 127 164 103 161 70C128 72 111 94 113 127Z" fill="#54D98A"/>
+  <path d="M110 88C100 62 110 37 136 23C147 51 136 76 110 88Z" fill="#82E99D"/>
+  <path d="M105 110C89 98 77 85 70 69" stroke="#E3FFD0" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+  <path d="M116 126C132 108 143 94 151 80" stroke="#DFFFD1" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
+  <path d="M114 84C122 65 128 50 133 38" stroke="#E6FFD7" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="150" cy="36" r="8" fill="#FFE07D"/>
+  <circle cx="150" cy="36" r="14" stroke="#FFE07D" stroke-opacity=".25" stroke-width="7"/>
+</svg>
