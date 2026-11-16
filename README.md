@@ -1,41 +1,54 @@
-![Dino, la mascota de DinBank](inspiracion/assets/dinbank-portada.png)
+![DinBank](inspiracion/assets/dinbank-portada.png)
 
 # DinBank
 
-DinBank es un proyecto escolar que simula una billetera virtual. Permite iniciar sesión, guardar metas, calcular una proyección de ahorro y registrar transferencias simuladas.
+DinBank es una aplicación web de finanzas personales que permite gestionar metas de ahorro, proyectar su crecimiento y registrar transferencias simuladas. El proyecto integra una interfaz web con autenticación y persistencia de datos mediante Supabase.
 
-Es una aplicación educativa: no mueve dinero real. El saldo mostrado es de ejemplo y no se calcula a partir de los movimientos.
+El alcance actual es demostrativo: no procesa dinero real y el saldo mostrado no se calcula a partir de los movimientos registrados.
 
-## Puesta en marcha
+## Funcionalidades
 
-La aplicación usa Supabase para iniciar sesión y guardar datos. La URL y la clave publicable del proyecto ya están configuradas.
+- Autenticación con correo electrónico y contraseña mediante Supabase Auth.
+- Creación y consulta de metas de ahorro por usuario.
+- Cálculo y almacenamiento de proyecciones de ahorro.
+- Registro de transferencias simuladas.
+- Persistencia de datos con políticas de acceso por usuario en PostgreSQL.
 
-1. Ejecutá [supabase/schema.sql](supabase/schema.sql) en el SQL Editor de Supabase y creá un usuario. Los pasos están en el [tutorial de conexión](SUPABASE_TUTORIAL.md).
-2. Desde la carpeta raíz del proyecto, iniciá un servidor local:
+## Tecnologías
 
-   ```powershell
-   python -m http.server 8000
-   ```
+| Componente | Tecnología |
+| --- | --- |
+| Interfaz | HTML, CSS y JavaScript |
+| Autenticación y datos | Supabase Auth y PostgreSQL |
+| Cálculos | Python |
 
-3. Abrí [localhost:8000/frontend/](http://localhost:8000/frontend/) e ingresá con el usuario creado.
-
-## Estructura
+## Estructura del repositorio
 
 ```text
-frontend/          Aplicación web
-supabase/          Esquema y permisos de la base de datos
-backend_calculos/  Cálculos y pruebas en Python
-inspiracion/       Maquetas y recursos gráficos
+frontend/          Interfaz y cliente de Supabase
+supabase/          Esquema PostgreSQL y políticas de acceso
+backend_calculos/  Módulos de cálculo y pruebas
+inspiracion/       Propuestas visuales y recursos gráficos
 bd/                Implementación anterior en PHP
-database/          Esquema anterior para MariaDB
+database/          Esquemas anteriores para MariaDB
 ```
 
-El frontend está hecho con HTML, CSS y JavaScript. Supabase proporciona autenticación y almacenamiento en PostgreSQL. Las carpetas `bd/` y `database/` se conservan como referencia de la implementación anterior.
+Las carpetas `bd/` y `database/` conservan la implementación anterior y no intervienen en el flujo actual de autenticación.
+
+## Desarrollo local
+
+Requiere Python 3, un navegador moderno y un proyecto de Supabase con el esquema de [`supabase/schema.sql`](supabase/schema.sql) aplicado. La configuración existente se encuentra en `frontend/java/supabase-config.js`.
+
+```bash
+python -m http.server 8000
+```
+
+La aplicación queda disponible en `http://localhost:8000/frontend/`. La [guía de conexión](SUPABASE_TUTORIAL.md) contiene los pasos para preparar Supabase y crear un usuario.
 
 ## Pruebas
 
-Para ejecutar las pruebas de los cálculos:
-
-```powershell
+```bash
 python -m unittest discover backend_calculos/tests
 ```
+
+Estas pruebas cubren los módulos de cálculo en Python. La integración con Supabase requiere verificarla con un proyecto configurado y un usuario autenticado.
