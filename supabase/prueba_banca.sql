@@ -1,7 +1,8 @@
 begin;
 insert into auth.users (id, email, raw_user_meta_data) values
- ('f0000000-0000-0000-0000-000000000001','dinbank-test-one@example.invalid','{}'),
+ ('f0000000-0000-0000-0000-000000000001','dinbank-test-one@example.invalid','{"nombre":"Prueba"}'),
  ('f0000000-0000-0000-0000-000000000002','dinbank-test-two@example.invalid','{}');
+do $$ begin if not exists (select 1 from public.dinbank_profiles where id = 'f0000000-0000-0000-0000-000000000001' and nombre = 'Prueba') then raise exception 'Perfil no creado'; end if; end $$;
 select set_config('dinbank.numero_prueba', (select numero::text from public.dinbank_cuentas where user_id = 'f0000000-0000-0000-0000-000000000002'), true);
 set local role authenticated;
 select set_config('request.jwt.claim.sub','f0000000-0000-0000-0000-000000000001',true);
