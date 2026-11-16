@@ -1,54 +1,29 @@
-![DinBank](inspiracion/assets/dinbank-portada.png)
+![DinBank](legacy/inspiracion/assets/dinbank-portada.png)
 
 # DinBank
 
-DinBank es una aplicación web de finanzas personales que permite gestionar metas de ahorro, proyectar su crecimiento y registrar transferencias simuladas. El proyecto integra una interfaz web con autenticación y persistencia de datos mediante Supabase.
+DinBank es una simulación de banca para jugar roles. Usa usuarios reales de Supabase Auth, pero el dinero, los depósitos y las transferencias son ficticios y no tienen valor económico.
 
-El alcance actual es demostrativo: no procesa dinero real y el saldo mostrado no se calcula a partir de los movimientos registrados.
+Cada usuario tiene una cuenta con saldo inicial cero. Puede hacer depósitos simulados y transferir a otra cuenta mediante su número de cuenta, visible en el panel. Los movimientos y saldos se guardan en Supabase; las operaciones y la comprobación de saldo se ejecutan en la base de datos. Metas y proyecciones de ahorro se guardan por separado y no afectan al saldo.
 
-## Funcionalidades
+## Organización
 
-- Autenticación con correo electrónico y contraseña mediante Supabase Auth.
-- Creación y consulta de metas de ahorro por usuario.
-- Cálculo y almacenamiento de proyecciones de ahorro.
-- Registro de transferencias simuladas.
-- Persistencia de datos con políticas de acceso por usuario en PostgreSQL.
+- `frontend/`: aplicación activa; `js/` contiene JavaScript y `estilos/` las hojas de estilo.
+- `supabase/`: esquema original, migración de la simulación y prueba SQL reversible.
+- `backend_calculos/`: ejercicios de cálculo en Python; no intervienen en las operaciones de la aplicación web.
+- `docs/`: guías de configuración y documentación técnica.
+- `legacy/`: maquetas y versiones anteriores en PHP y MariaDB, conservadas como referencia; no forman parte de la aplicación activa.
 
-## Tecnologías
+## Puesta en marcha
 
-| Componente | Tecnología |
-| --- | --- |
-| Interfaz | HTML, CSS y JavaScript |
-| Autenticación y datos | Supabase Auth y PostgreSQL |
-| Cálculos | Python |
+1. En un proyecto Supabase nuevo ejecutá `supabase/schema.sql` y después `supabase/banca_simulada.sql` desde el editor SQL. Para el proyecto existente la migración de banca simulada ya fue aplicada.
+2. Creá usuarios en **Authentication > Users**. Cada usuario debe ingresar con sus propias credenciales. No compartas contraseñas ni claves secretas.
+3. Configurá `frontend/js/supabase-config.js` con la URL y la clave **publicable**. La clave publicable no sustituye las políticas de seguridad de la base de datos.
+4. Ejecutá `python -m http.server 8000` desde la raíz y abrí <http://localhost:8000/frontend/>.
+5. Depositá dinero simulado y transferilo al número de cuenta de otro usuario. El depósito es libre porque esta aplicación es un juego de roles.
 
-## Estructura del repositorio
-
-```text
-frontend/          Interfaz y cliente de Supabase
-supabase/          Esquema PostgreSQL y políticas de acceso
-backend_calculos/  Módulos de cálculo y pruebas
-inspiracion/       Propuestas visuales y recursos gráficos
-bd/                Implementación anterior en PHP
-database/          Esquemas anteriores para MariaDB
-```
-
-Las carpetas `bd/` y `database/` conservan la implementación anterior y no intervienen en el flujo actual de autenticación.
-
-## Desarrollo local
-
-Requiere Python 3, un navegador moderno y un proyecto de Supabase con el esquema de [`supabase/schema.sql`](supabase/schema.sql) aplicado. La configuración existente se encuentra en `frontend/java/supabase-config.js`.
-
-```bash
-python -m http.server 8000
-```
-
-La aplicación queda disponible en `http://localhost:8000/frontend/`. La [guía de conexión](SUPABASE_TUTORIAL.md) contiene los pasos para preparar Supabase y crear un usuario.
+El historial anterior de `dinbank_movimientos` se conserva separado y no se convierte en saldo: eran registros de simulación sin contrapartida.
 
 ## Pruebas
 
-```bash
-python -m unittest discover backend_calculos/tests
-```
-
-Estas pruebas cubren los módulos de cálculo en Python. La integración con Supabase requiere verificarla con un proyecto configurado y un usuario autenticado.
+`python -m unittest discover backend_calculos/tests` comprueba los cálculos de Python. `supabase/prueba_banca.sql` prueba cuentas, aislamiento, transferencias y sobregiros dentro de una transacción que termina en rollback; ejecutalo en el editor SQL de un proyecto de prueba.

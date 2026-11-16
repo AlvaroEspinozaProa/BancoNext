@@ -17,7 +17,7 @@
 </head>
 
 
-<body>
+<body hidden>
 
 
     <!-- CONTENEDOR PRINCIPAL -->
@@ -29,11 +29,11 @@
 
             <div class="saludo">
                 <h2>
-                    Hola, <span id="nombreUsuario">usuario</span> 
+                    Hola, <span id="nombreUsuario">usuario</span>
                 </h2>
 
                 <p>
-                    Tu ahorro está creciendo
+                    Tu cuenta de rol bancaria
                 </p>
             </div>
 
@@ -43,10 +43,10 @@
 
             <div class="saldo">
 
-                <h2>Saldo disponible</h2>
+                <h2>Saldo simulado disponible</h2>
 
                 <h1>
-                    $ <span id="saldoUsuario">150000</span>
+                    $ <span id="saldoUsuario">—</span>
                 </h1>
 
             </div>
@@ -56,6 +56,29 @@
 
 
 
+
+        <p id="estadoCuenta" role="status"></p>
+        <p>Tu número de cuenta simulada: <strong id="numeroCuenta"></strong></p>
+        <button id="cerrarSesion" type="button">Cerrar sesión</button>
+        <section aria-labelledby="depositoTitulo">
+            <h2 id="depositoTitulo">Depositar dinero simulado</h2>
+            <form id="formDeposito">
+                <label>Monto <input name="monto" type="number" min="0.01" max="9999999999.99" step="0.01" required></label>
+                <button type="submit">Depositar</button><p aria-live="polite"></p>
+            </form>
+        </section>
+        <section id="panelTransferencias" hidden>
+            <h2>Transferir dinero simulado</h2>
+            <form id="formTransferencia">
+                <label>Cuenta de destino <input name="destino" required placeholder="Número de cuenta"></label>
+                <label>Monto <input name="monto" type="number" min="0.01" max="9999999999.99" step="0.01" required></label>
+                <button type="submit">Transferir</button><p aria-live="polite"></p>
+            </form>
+        </section>
+        <section aria-labelledby="movimientosTitulo">
+            <h2 id="movimientosTitulo">Últimos movimientos simulados</h2>
+            <ul id="listaMovimientos"></ul>
+        </section>
 
         <!-- ZONA DEL DINOSAURIO -->
 
@@ -172,7 +195,7 @@
             <div class="resultado-ahorro">
 
                 <p>
-                    Proyección futura:
+                    Proyección simulada a 12 meses (5 %):
                 </p>
 
                 <h3 id="resultado">
@@ -251,7 +274,7 @@
         </div>
 
 
-            <div 
+            <div
             class="chat-mensajes"
             id="mensajesChat">
 
@@ -269,7 +292,7 @@
             <div class="chat-input">
 
 
-                <input 
+                <input
                 type="text"
                 id="pregunta"
                 placeholder="Escribe tu consulta...">
@@ -301,87 +324,14 @@
 
 
 
-    <!-- BARRA DE NAVEGACION INFERIOR -->
-
-
-    <nav class="navbar">
-
-
-        <button>
-
-            🏠
-            <span>
-                Inicio
-            </span>
-
-        </button>
-
-
-
-        <button>
-
-            📊
-            <span>
-                Movimientos
-            </span>
-
-        </button>
-
-
-
-        <button>
-
-            QR
-            <span>
-                QR
-            </span>
-
-        </button>
-
-
-
-        <button>
-
-            💳
-            <span>
-                Tarjeta
-            </span>
-
-        </button>
-
-
-
-        <button>
-
-            ☰
-            <span>
-                Menú
-            </span>
-
-        </button>
-
-
-
-    </nav>
-
-
-
-
-
-
-
-
     <!-- JAVASCRIPT -->
 
-    <script type="module" src="java/app.js"></script>
-    <script src="java/dinosaurio.js"></script>
-    <script src="java/grafico.js"></script>
-    <script src="java/chatbot.js"></script>
-    <script src="java/navbar.js"></script>
-    <script type="module" src="java/ahorro.js"></script>
-    <script src="java/dashboard.js"></script>
-    <script type="module" src="java/metas.js"></script>
-    <script type="module" src="java/transferencia.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script src="js/dinosaurio.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script type="module" src="js/ahorro.js"></script>
+    <script type="module" src="js/metas.js"></script>
+    <script type="module" src="js/transferencia.js"></script>
 </body>
 
 </html>

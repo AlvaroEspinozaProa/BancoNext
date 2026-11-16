@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Movimientos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/movimientos.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación de ejemplo">
+            <a class="brand" href="dashboard.html"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item" href="transferir.html">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item" href="metas.html">◎ <span>Mis metas</span></a>
+                <a class="menu-item active" href="#movimientos">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="movimientos" class="main-content">
+            <header class="topbar">
+                <div>
+                    <a class="back-link" href="dashboard.html">← Volver al inicio</a>
+                    <h1>Movimientos</h1>
+                    <p>Revisá cómo se movió tu plata este mes.</p>
+                </div>
+                <div class="profile"><button type="button" class="bell" aria-label="Notificaciones">♧</button><div class="avatar">A</div></div>
+            </header>
+
+            <section class="balance-card card">
+                <div><p class="eyebrow">RESUMEN DE SEPTIEMBRE</p><h2>Tu cuenta se movió bien</h2><p>Ingresaste más de lo que gastaste este mes.</p></div>
+                <div class="balance-data"><span><small>Ingresos</small><strong class="income">+ $ 186.500</strong></span><span><small>Gastos</small><strong class="expense">− $ 73.400</strong></span><span><small>Balance</small><strong>+ $ 113.100</strong></span></div>
+                <img src="../assets/illustrations/dino-movimientos.png" alt="Dino revisando los movimientos de la cuenta">
+            </section>
+
+            <section class="toolbar">
+                <div><p class="eyebrow">HISTORIAL</p><h2>Todos los movimientos</h2></div>
+                <div class="filters" aria-label="Filtros de muestra"><button type="button" class="selected">Todos</button><button type="button">Ingresos</button><button type="button">Gastos</button><button type="button">Septiembre⌄</button></div>
+            </section>
+
+            <section class="content-grid">
+                <div class="movements-card card">
+                    <div class="date-heading"><span>HOY</span><small>13 de septiembre</small></div>
+                    <article class="movement"><span class="movement-icon transfer">⇄</span><div class="movement-info"><strong>Transferencia a Sol Naranja</strong><small>Hoy, 11:42 · SOL.NARANJA.DINO</small></div><div class="movement-money expense"><strong>− $ 12.500</strong><small>Transferencia</small></div></article>
+                    <article class="movement"><span class="movement-icon food">⌁</span><div class="movement-info"><strong>Almacén La Esquina</strong><small>Hoy, 09:18 · Compra con QR</small></div><div class="movement-money expense"><strong>− $ 8.900</strong><small>Pago</small></div></article>
+
+                    <div class="date-heading"><span>AYER</span><small>12 de septiembre</small></div>
+                    <article class="movement"><span class="movement-icon income-icon">↙</span><div class="movement-info"><strong>Transferencia de Martín López</strong><small>Ayer, 18:06 · MARTIN.LOPEZ</small></div><div class="movement-money income"><strong>+ $ 24.000</strong><small>Transferencia</small></div></article>
+                    <article class="movement"><span class="movement-icon save">↗</span><div class="movement-info"><strong>Aporte a ahorro “Notebook”</strong><small>Ayer, 12:30 · Ahorro automático</small></div><div class="movement-money expense"><strong>− $ 10.000</strong><small>Ahorro</small></div></article>
+
+                    <div class="date-heading"><span>10 DE SEPTIEMBRE</span></div>
+                    <article class="movement"><span class="movement-icon school">✦</span><div class="movement-info"><strong>Reintegro escolar</strong><small>10 sep., 16:10 · Programa ejemplo</small></div><div class="movement-money income"><strong>+ $ 18.500</strong><small>Ingreso</small></div></article>
+                    <article class="movement"><span class="movement-icon music">♪</span><div class="movement-info"><strong>Suscripción de música</strong><small>10 sep., 08:01 · Pago mensual</small></div><div class="movement-money expense"><strong>− $ 4.000</strong><small>Suscripción</small></div></article>
+                    <button type="button" class="load-more">Cargar movimientos anteriores</button>
+                </div>
+
+                <aside class="side-column">
+                    <section class="category-card card"><p class="eyebrow">GASTOS DEL MES</p><h2>¿En qué gastaste?</h2><div class="donut" aria-label="Gráfico de gastos por categoría"><span><strong>$ 73.400</strong><small>gastados</small></span></div><ul><li><i class="food-dot"></i>Comida <strong>38%</strong></li><li><i class="transfer-dot"></i>Transferencias <strong>29%</strong></li><li><i class="other-dot"></i>Otros <strong>33%</strong></li></ul></section>
+                    <section class="tip-card"><img src="../assets/illustrations/dino-ahorrar.png" alt="Dino cuidando una planta"><div><strong>Tip de Dino</strong><span>Separar un monto al inicio del mes hace crecer tu ahorro.</span></div></section>
+                </aside>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>
