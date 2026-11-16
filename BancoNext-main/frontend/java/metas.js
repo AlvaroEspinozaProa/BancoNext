@@ -1,79 +1,69 @@
+import { obtenerSupabase } from "./supabase.js";
+
 document.addEventListener("DOMContentLoaded", iniciarMetas);
 
 function iniciarMetas() {
-
     const botonMetas = document.querySelector(".metas");
     const seccionAcciones = document.querySelector(".acciones");
+    if (!botonMetas || !seccionAcciones) return;
 
-    botonMetas.addEventListener("click", mostrarMetas);
-
-    function mostrarMetas() {
-
-        const panelExistente = document.getElementById("panelMetas");
-
-        // Si el panel ya existe, lo mostramos u ocultamos
-        if (panelExistente) {
-
-            if (panelExistente.style.display === "none") {
-                panelExistente.style.display = "block";
-            } else {
-                panelExistente.style.display = "none";
-            }
-
+    botonMetas.addEventListener("click", async () => {
+        const existente = document.getElementById("panelMetas");
+        if (existente) {
+            existente.hidden = !existente.hidden;
             return;
         }
-
-        // Crear el panel
         const panel = document.createElement("div");
-
         panel.id = "panelMetas";
-
         panel.innerHTML = `
             <h2>🎯 Mis metas de ahorro</h2>
-
-            <input
-                type="text"
-                id="nuevaMeta"
-                placeholder="Escribe una meta">
-
-            <button id="agregarMeta">
-                Agregar meta
-            </button>
-
-            <ul id="listaMetas"></ul>
-        `;
-
-        // Agregar el panel después de los botones
+            <input type="text" id="nuevaMeta" placeholder="Escribí una meta">
+            <button id="agregarMeta">Guardar meta</button>
+            <p id="mensajeMeta" aria-live="polite"></p>
+            <ul id="listaMetas"></ul>`;
         seccionAcciones.after(panel);
+        const lista = panel.querySelector("#listaMetas");
+        const mensaje = panel.querySelector("#mensajeMeta");
 
-        const inputMeta = document.getElementById("nuevaMeta");
-        const botonAgregar = document.getElementById("agregarMeta");
-        const listaMetas = document.getElementById("listaMetas");
-
-        botonAgregar.addEventListener("click", agregarMeta);
-
-        function agregarMeta() {
-
-            const meta = inputMeta.value.trim();
-
-            if (meta === "") {
-
-                alert("Por favor, escribe una meta.");
-
-                return;
-
-            }
-
-            const nuevaMeta = document.createElement("li");
-
-            nuevaMeta.textContent = "🎯 " + meta;
-
-            listaMetas.appendChild(nuevaMeta);
-
-            inputMeta.value = "";
-
+        try {
+            const supabase = await obtenerSupabase();
+            const { data, error } = await supabase.from("dinbank_metas")
+                .select("descripcion").order("created_at", { ascending: true });
+            if (error) throw error;
+            data.forEach(({ descripcion }) => agregarElemento(lista, descripcion));
+        } catch (error) {
+            mensaje.textContent = error.message || "No se pudieron cargar las metas.";
         }
 
-    }
+        panel.querySelector("#agregarMeta").addEventListener("click", async () => {
+            const input = panel.querySelector("#nuevaMeta");
+            const descripcion = input.value.trim();
+            if (!descripcion) {
+                mensaje.textContent = "Escribí una meta.";
+                return;
+            }
+            const boton = panel.querySelector("#agregarMeta");
+            boton.disabled = true;
+            try {
+                const supabase = await obtenerSupabase();
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) throw new Error("Tu sesión terminó. Volvé a iniciar sesión.");
+                const { error } = await supabase.from("dinbank_metas").insert({ user_id: user.id, descripcion });
+                if (error) throw error;
+                agregarElemento(lista, descripcion);
+                input.value = "";
+                mensaje.textContent = "Meta guardada.";
+            } catch (error) {
+                mensaje.textContent = error.message || "No se pudo guardar la meta.";
+            } finally {
+                boton.disabled = false;
+            }
+        });
+    });
+}
 
+function agregarElemento(lista, descripcion) {
+    const elemento = document.createElement("li");
+    elemento.textContent = "🎯 " + descripcion;
+    lista.appendChild(elemento);
 }

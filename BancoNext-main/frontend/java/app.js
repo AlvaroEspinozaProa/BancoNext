@@ -1,7 +1,4 @@
-/* ==========================================
-   BANCO DINO
-   APP PRINCIPAL
-========================================== */
+import { obtenerSupabase } from "./supabase.js";
 
 document.addEventListener("DOMContentLoaded", iniciarAplicacion);
 
@@ -19,32 +16,33 @@ async function iniciarAplicacion(){
         return;
     }
 
-    // El servidor confirma qué usuario inició sesión antes de mostrar el dashboard.
-    localStorage.setItem("usuario", usuario.nombre);
-
-    cargarUsuario();
+    cargarUsuario(usuario);
 
     mostrarFecha();
 
 }
 
-/* COMPROBAR LA SESIÓN DEL SERVIDOR */
-
 async function obtenerSesion(){
-
     try {
-        const respuesta = await fetch("../bd/sesion.php", {
-            credentials: "same-origin"
-        });
-
-        if (!respuesta.ok) {
+        const supabase = await obtenerSupabase();
+        const { data: { user }, error } = await supabase.auth.getUser();
+        if (error || !user) {
             return null;
         }
 
-        const datos = await respuesta.json();
-        return datos.usuario;
+        const { data: perfil, error: errorPerfil } = await supabase
+            .from("dinbank_profiles")
+            .select("nombre")
+            .eq("id", user.id)
+            .maybeSingle();
+
+        if (errorPerfil) {
+            console.error("No se pudo cargar el perfil:", errorPerfil);
+        }
+
+        return { nombre: perfil?.nombre || user.email };
     } catch (error) {
-        console.error("No se pudo comprobar la sesión:", error);
+        console.error("No se pudo comprobar la sesión de Supabase:", error);
         return null;
     }
 
@@ -53,22 +51,11 @@ async function obtenerSesion(){
 
 /* CARGAR USUARIO */
 
-function cargarUsuario(){
-
-    const nombre = localStorage.getItem("usuario");
-
-    if(nombre){
-
-        const usuario = document.getElementById("nombreUsuario");
-
-        if(usuario){
-
-            usuario.textContent = nombre;
-
-        }
-
+function cargarUsuario(usuario){
+    const nombreElemento = document.getElementById("nombreUsuario");
+    if (nombreElemento) {
+        nombreElemento.textContent = usuario.nombre;
     }
-
 }
 
 
