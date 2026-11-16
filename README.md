@@ -27,3 +27,5 @@ El historial anterior de `dinbank_movimientos` se conserva separado y no se conv
 ## Pruebas
 
 `python -m unittest discover backend_calculos/tests` comprueba los cálculos de Python. `supabase/prueba_banca.sql` prueba cuentas, aislamiento, transferencias y sobregiros dentro de una transacción que termina en rollback; ejecutalo en el editor SQL de un proyecto de prueba.
+
+`node frontend/tests/ahorro.test.cjs` verifica la proyección de ahorro y su validación.

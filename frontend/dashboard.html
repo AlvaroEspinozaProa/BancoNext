@@ -67,6 +67,12 @@
                 <button type="submit">Depositar</button><p aria-live="polite"></p>
             </form>
         </section>
+        <form id="panelAhorro" hidden>
+            <h2>Proyección de ahorro</h2>
+            <label>Ahorro mensual <input name="cantidad" type="number" min="0.01" max="793650793.65" step="0.01" required></label>
+            <button type="submit">Calcular y guardar</button>
+            <p id="mensajeAhorro" aria-live="polite"></p>
+        </form>
         <section id="panelTransferencias" hidden>
             <h2>Transferir dinero simulado</h2>
             <form id="formTransferencia">

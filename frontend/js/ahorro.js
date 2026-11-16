@@ -4,7 +4,11 @@ document.addEventListener("DOMContentLoaded", iniciarAhorro);
 
 async function iniciarAhorro() {
     const boton = document.querySelector(".ahorro");
-    if (boton) boton.addEventListener("click", calcularAhorro);
+    const panel = document.getElementById("panelAhorro");
+    if (boton && panel) {
+        boton.addEventListener("click", () => { panel.hidden = !panel.hidden; });
+        panel.addEventListener("submit", calcularAhorro);
+    }
     try {
         const supabase = await obtenerSupabase();
         const { data, error } = await supabase.from("dinbank_simulaciones_ahorros")
@@ -16,13 +20,18 @@ async function iniciarAhorro() {
     }
 }
 
-async function calcularAhorro() {
-    const cantidad = Number(prompt("¿Cuánto dinero querés ahorrar por mes?"));
-    if (!Number.isFinite(cantidad) || cantidad <= 0) {
-        alert("Ingresá un número válido.");
+async function calcularAhorro(event) {
+    event.preventDefault();
+    const formulario = event.currentTarget;
+    const cantidad = Number(formulario.elements.cantidad.value);
+    const mensaje = document.getElementById("mensajeAhorro");
+    if (!Number.isFinite(cantidad) || cantidad <= 0 || cantidad > 793650793.65 || !/^\d+(\.\d{1,2})?$/.test(formulario.elements.cantidad.value)) {
+        mensaje.textContent = "Ingresá un monto válido con hasta dos decimales.";
         return;
     }
-    const total = cantidad * 12 * 1.05;
+    const total = Math.round(cantidad * 12 * 1.05 * 100) / 100;
+    const boton = formulario.querySelector("button");
+    boton.disabled = true;
     try {
         const supabase = await obtenerSupabase();
         const { data: { user } } = await supabase.auth.getUser();
@@ -33,8 +42,11 @@ async function calcularAhorro() {
         });
         if (error) throw error;
         mostrarAhorro(total);
+        mensaje.textContent = "Proyección guardada.";
     } catch (error) {
-        alert(error.message || "No se pudo guardar la proyección.");
+        mensaje.textContent = error.message || "No se pudo guardar la proyección.";
+    } finally {
+        boton.disabled = false;
     }
 }
 
