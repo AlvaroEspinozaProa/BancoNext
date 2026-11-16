@@ -5,7 +5,7 @@
 
 
 
-console.log("Login JS cargado correctamente");
+import { obtenerSupabase } from "./supabase.js";
 
 
 document.addEventListener("DOMContentLoaded", iniciarLogin);
@@ -21,7 +21,6 @@ function iniciarLogin(){
     const checkboxMostrar = document.getElementById("mostrarPassword");
     const password = document.getElementById("password");
 
-    // Este archivo también se carga en el dashboard, donde no existe el formulario.
     if (!formulario || !checkboxMostrar || !password) {
         return;
     }
@@ -50,32 +49,28 @@ async function validarLogin(event) {
 
     event.preventDefault();
 
-    const usuario = document.getElementById("usuario").value.trim();
+    const email = document.getElementById("email").value.trim();
     const contrasena = document.getElementById("password").value;
     const botonIngresar = event.currentTarget.querySelector('button[type="submit"]');
 
-    if (!usuario || !contrasena) {
-        alert("Ingresá tu usuario o email y tu contraseña.");
+    if (!email || !contrasena) {
+        alert("Ingresá tu email y tu contraseña.");
         return;
     }
 
     botonIngresar.disabled = true;
 
     try {
-        const respuesta = await fetch("../bd/login.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "same-origin",
-            body: JSON.stringify({ usuario, contrasena })
+        const supabase = await obtenerSupabase();
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password: contrasena
         });
-        const datos = await respuesta.json();
 
-        if (!respuesta.ok) {
-            throw new Error(datos.error || "No se pudo iniciar sesión.");
+        if (error) {
+            throw error;
         }
 
-        // Solo se conserva el nombre para mostrarlo; la autenticación vive en PHP.
-        localStorage.setItem("usuario", datos.usuario.nombre);
         window.location.assign("dashboard.html");
     } catch (error) {
         alert(error.message || "No se pudo conectar con el servidor.");

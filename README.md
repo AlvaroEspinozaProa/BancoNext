@@ -1,69 +1,41 @@
-<div align="center">
-  <img src="BancoNext-main/inspiracion/assets/dinbank-portada.png" alt="Dino, la mascota de DinBank, junto a una planta y monedas" width="100%">
+![Dino, la mascota de DinBank](inspiracion/assets/dinbank-portada.png)
 
-  # DinBank 🦖
+# DinBank
 
-  **Una billetera virtual educativa para aprender a ahorrar.**
+DinBank es un proyecto escolar que simula una billetera virtual. Permite iniciar sesión, guardar metas, calcular una proyección de ahorro y registrar transferencias simuladas.
 
-  [Empezar](#-empezar) · [Conectar Supabase](BancoNext-main/SUPABASE_TUTORIAL.md) · [Conocer el proyecto](#-el-proyecto)
-</div>
+Es una aplicación educativa: no mueve dinero real. El saldo mostrado es de ejemplo y no se calcula a partir de los movimientos.
 
----
+## Puesta en marcha
 
-## 🌱 El proyecto
+La aplicación usa Supabase para iniciar sesión y guardar datos. La URL y la clave publicable del proyecto ya están configuradas.
 
-DinBank es un proyecto escolar que explora cómo funciona una billetera virtual: iniciar sesión, plantear metas y calcular el crecimiento del ahorro, acompañado por Dino.
-
-> **Una maqueta para aprender:** no utiliza dinero real. Las transferencias son registros simulados y el saldo de la pantalla es ilustrativo.
-
-## ✨ Qué podés hacer
-
-- **Ingresar** con una cuenta de Supabase Auth.
-- **Guardar metas** y volver a consultarlas.
-- **Proyectar ahorros** y conservar la última proyección.
-- **Registrar transferencias simuladas** como movimientos de práctica.
-- **Recorrer las maquetas** y explorar los cálculos en Python.
-
-Las metas, proyecciones y transferencias simuladas se guardan por usuario cuando la base está configurada. El saldo y el chatbot siguen siendo elementos de demostración.
-
-## 🚀 Empezar
-
-La versión oficial del proyecto está en **[`BancoNext-main/`](BancoNext-main/)**. La URL y la clave publicable de Supabase ya están configuradas en el proyecto.
-
-1. En Supabase, ejecutá [`supabase/schema.sql`](BancoNext-main/supabase/schema.sql) y creá un usuario. El [tutorial de conexión](BancoNext-main/SUPABASE_TUTORIAL.md) explica los pasos.
-2. Desde una terminal, entrá a la carpeta oficial e iniciá un servidor local:
+1. Ejecutá [supabase/schema.sql](supabase/schema.sql) en el SQL Editor de Supabase y creá un usuario. Los pasos están en el [tutorial de conexión](SUPABASE_TUTORIAL.md).
+2. Desde la carpeta raíz del proyecto, iniciá un servidor local:
 
    ```powershell
-   cd BancoNext-main
    python -m http.server 8000
    ```
 
 3. Abrí [localhost:8000/frontend/](http://localhost:8000/frontend/) e ingresá con el usuario creado.
 
-## 🧭 Estructura
+## Estructura
 
 ```text
-BancoNext-main/
-├── frontend/          Aplicación web y conexión a Supabase
-├── supabase/          Tablas y políticas de acceso
-├── backend_calculos/  Cálculos educativos y pruebas en Python
-├── inspiracion/       Maquetas y recursos visuales
-├── bd/ y database/    Implementación anterior con PHP y MariaDB
-└── SUPABASE_TUTORIAL.md
+frontend/          Aplicación web
+supabase/          Esquema y permisos de la base de datos
+backend_calculos/  Cálculos y pruebas en Python
+inspiracion/       Maquetas y recursos gráficos
+bd/                Implementación anterior en PHP
+database/          Esquema anterior para MariaDB
 ```
 
-El repositorio conserva además una copia anterior en su raíz. Para trabajar en la versión vigente, usá los archivos dentro de `BancoNext-main/`.
+El frontend está hecho con HTML, CSS y JavaScript. Supabase proporciona autenticación y almacenamiento en PostgreSQL. Las carpetas `bd/` y `database/` se conservan como referencia de la implementación anterior.
 
-## 🛠️ Tecnologías
+## Pruebas
 
-HTML · CSS · JavaScript · Supabase Auth y PostgreSQL · Python
-
-Para ejecutar las pruebas de los cálculos desde la raíz del repositorio:
+Para ejecutar las pruebas de los cálculos:
 
 ```powershell
-python -m unittest discover BancoNext-main/backend_calculos/tests
+python -m unittest discover backend_calculos/tests
 ```
-
----
-
-<div align="center">Hecho para aprender, paso a paso. 🌿</div>

@@ -41,5 +41,8 @@
         forms.forEach((form) => form.addEventListener("submit", (event) => { event.preventDefault(); window.location.href = "dashboard.html"; }));
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { gsap.timeline({defaults:{ease:"power3.out"}}).from(".brand,.welcome-copy",{x:-18,opacity:0,stagger:.12,duration:.55}).from(".dino",{x:26,opacity:0,duration:.65},"-=.38").from(".form-card",{y:22,opacity:0,duration:.55},"-=.45"); gsap.to(".dino",{rotation:1.2,x:3,scale:1.018,transformOrigin:"50% 90%",duration:2.8,repeat:-1,yoyo:true,ease:"sine.inOut"}); }
     </script>
+
+    <script type="module" src="js/app.js"></script>
+
 </body>
 </html>
