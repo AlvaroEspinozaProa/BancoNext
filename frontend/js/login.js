@@ -72,7 +72,7 @@ async function validarLogin(event) {
             throw error;
         }
 
-        window.location.assign("dashboard.html");
+        window.location.assign("pages/dashboard.html");
     } catch (error) {
         alert(error.message || "No se pudo conectar con el servidor.");
     } finally {

@@ -1,0 +1,70 @@
+[hidden] { display: none !important; }
+body { min-width: 0 !important; }
+#numeroCuenta { overflow-wrap: anywhere; }
+#cerrarSesion { border: 0; border-radius: 9px; padding: 8px 12px; cursor: pointer; }
+.deposito, #formMeta { margin: 18px 0; padding: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.deposito input, #formMeta input { padding: 10px; border: 1px solid #cfddd6; border-radius: 10px; min-width: 0; }
+.deposito button, #formMeta button { border: 0; padding: 10px 16px; border-radius: 10px; background: #159b61; color: white; cursor: pointer; }
+#listaMetas { margin-top: 18px; }
+#listaMovimientos .movement > span { display: grid; gap: 4px; }
+@media(max-width: 900px) {
+ .app-shell { display: block !important; }
+ .sidebar { position: static !important; width: auto !important; padding: 20px !important; }
+ .sidebar .menu { display: flex !important; overflow-x: auto; gap: 4px; margin-top: 18px; }
+ .sidebar .menu-item { flex: none; padding: 10px !important; }
+ .sidebar-footer { display: none !important; }
+ .main-content { width: 100% !important; margin: 0 !important; padding: 26px 20px !important; }
+ .dashboard-grid, .transfer-layout, .saving-layout, .settings-layout, .content-grid { grid-template-columns: 1fr !important; }
+ .quick-actions { grid-template-columns: 1fr !important; }
+ .dino-hero { max-width: 40%; }
+}
+.balance-amount #saldoUsuario { font-size: inherit; color: inherit; }
+@media(max-width: 900px) {
+ .balance-card { padding: 28px !important; }
+ .balance-card .dino-hero { width: 145px; right: 5px; bottom: -20px; opacity: .75; }
+ .balance-copy { z-index: 2; }
+ .account-details { display: grid !important; justify-items: start; gap: 10px !important; max-width: 70%; }
+ .account-details span { overflow-wrap: anywhere; }
+}
+/* Desplazamiento y controles coordinados con la identidad de DinBank. */
+html { scrollbar-color: #43ba82 #e4f1e9; scrollbar-width: thin; }
+* { scrollbar-color: #43ba82 #e4f1e9; scrollbar-width: thin; }
+*::-webkit-scrollbar { width: 9px; height: 7px; }
+*::-webkit-scrollbar-track { background: #e4f1e9; border-radius: 12px; }
+*::-webkit-scrollbar-thumb { background: #43ba82; border: 2px solid #e4f1e9; border-radius: 12px; }
+*::-webkit-scrollbar-thumb:hover { background: #159b61; }
+.sidebar .menu { scrollbar-color: #45bb83 #183d42; }
+.sidebar .menu::-webkit-scrollbar-track { background: #183d42; }
+.sidebar .menu::-webkit-scrollbar-thumb { background: #45bb83; border-color: #183d42; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #66d5a1; outline-offset: 3px; }
+button:disabled { opacity: .65; cursor: wait; }
+input { max-width: 100%; }
+.main-content, .main-content > *, .dashboard-grid > *, .transfer-layout > *, .saving-layout > *, .settings-layout > *, .content-grid > * { min-width: 0; }
+#listaMovimientos .movement { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+#listaMovimientos .movement span { min-width: 0; overflow-wrap: anywhere; }
+.goal-grid { margin-top: 18px; }
+@media(max-width: 900px) {
+ .sidebar .menu { padding-bottom: 10px; }
+ .balance-card { min-height: 250px; }
+ .balance-copy { max-width: 72%; }
+ .balance-card .dino-hero { z-index: 1; width: min(31vw, 165px); max-width: none; opacity: 1; }
+ .account-details { max-width: 100%; }
+ .hero, .goal-hero { overflow: hidden; }
+ .hero-copy { position: relative; z-index: 2; max-width: 65%; }
+ .goal-hero .dino-hero, .hero .dino-hero { max-width: 33%; }
+ .transfer-form, .saving-form, .projection-card, .movements-card { padding: 22px !important; }
+ .amount-field { max-width: 100%; }
+}
+@media(max-width: 520px) {
+ .topbar { gap: 12px; align-items: flex-start; }
+ .topbar h1 { font-size: 28px !important; overflow-wrap: anywhere; }
+ .balance-copy { max-width: 100%; }
+ .balance-card .dino-hero { width: 105px; right: 4px; bottom: -15px; }
+ .balance-card .balance-title, .balance-card .account-details { max-width: calc(100% - 95px); }
+ .balance-amount { font-size: 36px !important; }
+ .account-details { font-size: 11px; }
+ .hero-copy { max-width: 100%; }
+ .hero .dino-hero, .goal-hero .dino-hero { opacity: .35; }
+ .deposito { align-items: stretch; flex-direction: column; }
+ .deposito input, .deposito button { width: 100%; }
+}

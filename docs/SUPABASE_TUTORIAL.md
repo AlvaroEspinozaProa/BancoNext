@@ -1,6 +1,6 @@
 # Conectar DinBank con Supabase
 
-1. En un proyecto nuevo, ejecutá en el SQL Editor `supabase/schema.sql` y luego `supabase/banca_simulada.sql`. En el proyecto existente de DinBank esta migración ya está aplicada.
+1. En un proyecto nuevo, ejecutá en el SQL Editor `supabase/schema.sql`, luego `supabase/banca_simulada.sql` y finalmente `supabase/numeros_cuenta.sql`. En el proyecto existente de DinBank esta migración ya está aplicada.
 2. En Authentication > Users creá o revisá los usuarios y confirmá sus correos según la configuración del proyecto.
 3. Verificá en `frontend/js/supabase-config.js` la URL y la clave publicable del proyecto. Nunca agregues una clave secreta al frontend.
 4. Desde la raíz del repositorio ejecutá `python -m http.server 8000` y abrí http://localhost:8000/frontend/.

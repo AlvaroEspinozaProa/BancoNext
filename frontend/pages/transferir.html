@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Transferir dinero</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/transferir.css">
+    <style>body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }</style>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body hidden>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación principal">
+            <a class="brand" href="dashboard.html"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item active" href="#transferir">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item" href="metas.html">◎ <span>Mis metas</span></a>
+                <a class="menu-item" href="movimientos.html">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="transferir" class="main-content">
+<header class="topbar"><div><a class="back-link" href="dashboard.html">← Volver al inicio</a><h1>Transferir dinero</h1><p>Enviá dinero simulado a otra cuenta.</p></div><div class="avatar">⇄</div></header>
+ <section class="transfer-layout"><form id="formTransferencia" class="transfer-form card"><div class="form-heading"><div><p class="eyebrow">NUEVA TRANSFERENCIA</p><h2>¿A quién le vas a enviar?</h2></div></div><label class="field-label" for="destino">Número de cuenta de destino</label><div class="search-field"><input id="destino" name="destino" inputmode="numeric" pattern="[0-9]{1,12}" maxlength="12" placeholder="Ej: 000123" required></div><label class="field-label" for="monto">Monto a transferir</label><div class="amount-field"><span>$</span><input id="monto" name="monto" type="number" min="0.01" max="9999999999.99" step="0.01" required></div><p class="available">Saldo disponible: <strong id="saldoUsuario">—</strong></p><button class="continue-button" type="submit">Transferir →</button><p id="mensaje" class="demo-note" role="status"></p></form><aside class="summary-column"><section class="summary-card card"><p class="eyebrow">TU CUENTA</p><h2>Transferencia simulada</h2><p>Revisá el número de cuenta antes de enviar.</p></section><section class="safe-card"><img src="../assets/illustrations/dino-transferir.png" alt=""><div><strong>Tu dinero es ficticio</strong><span>Las operaciones son parte de la simulación.</span></div></section></aside></section>
+        </main>
+    </div>
+
+    <script type="module" src="../js/banca.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>

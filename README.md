@@ -8,15 +8,15 @@ Cada usuario tiene una cuenta con saldo inicial cero. Puede hacer depósitos sim
 
 ## Organización
 
-- `frontend/`: aplicación activa; `js/` contiene JavaScript y `estilos/` las hojas de estilo.
+- `frontend/`: aplicación activa; `pages/` contiene las pantallas, `css/` sus estilos, `assets/` las ilustraciones y `js/` la lógica. La interfaz recupera el diseño original de `inspiracion`.
 - `supabase/`: esquema original, migración de la simulación y prueba SQL reversible.
 - `backend_calculos/`: ejercicios de cálculo en Python; no intervienen en las operaciones de la aplicación web.
 - `docs/`: guías de configuración y documentación técnica.
-- `legacy/`: maquetas y versiones anteriores en PHP y MariaDB, conservadas como referencia; no forman parte de la aplicación activa.
+- `legacy/`: versiones anteriores y archivos de referencia conservados; la aplicación activa usa `frontend/`.
 
 ## Puesta en marcha
 
-1. En un proyecto Supabase nuevo ejecutá `supabase/schema.sql` y después `supabase/banca_simulada.sql` desde el editor SQL. Para el proyecto existente la migración de banca simulada ya fue aplicada.
+1. En un proyecto Supabase nuevo ejecutá `supabase/schema.sql`, después `supabase/banca_simulada.sql` y luego `supabase/numeros_cuenta.sql` desde el editor SQL. Para el proyecto existente la migración de banca simulada ya fue aplicada.
 2. Creá usuarios en **Authentication > Users**. Cada usuario debe ingresar con sus propias credenciales. No compartas contraseñas ni claves secretas.
 3. Configurá `frontend/js/supabase-config.js` con la URL y la clave **publicable**. La clave publicable no sustituye las políticas de seguridad de la base de datos.
 4. Ejecutá `python -m http.server 8000` desde la raíz y abrí <http://localhost:8000/frontend/>.

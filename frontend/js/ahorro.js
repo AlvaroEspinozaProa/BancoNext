@@ -5,10 +5,8 @@ document.addEventListener("DOMContentLoaded", iniciarAhorro);
 async function iniciarAhorro() {
     const boton = document.querySelector(".ahorro");
     const panel = document.getElementById("panelAhorro");
-    if (boton && panel) {
-        boton.addEventListener("click", () => { panel.hidden = !panel.hidden; });
-        panel.addEventListener("submit", calcularAhorro);
-    }
+    if (boton && panel) boton.addEventListener("click", () => { panel.hidden = !panel.hidden; });
+    if (panel) panel.addEventListener("submit", calcularAhorro);
     try {
         const supabase = await obtenerSupabase();
         const { data, error } = await supabase.from("dinbank_simulaciones_ahorros")

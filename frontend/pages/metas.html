@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Mis metas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/metas.css">
+    <link rel="stylesheet" href="../css/components/plantas.css">
+    <style>body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }</style>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body hidden>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación principal">
+            <a class="brand" href="dashboard.html"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item" href="transferir.html">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item active" href="#metas">◎ <span>Mis metas</span></a>
+                <a class="menu-item" href="movimientos.html">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="metas" class="main-content">
+<header class="topbar"><div><p class="eyebrow">ORGANIZÁ TUS SUEÑOS</p><h1>Mis metas</h1><p>Cada proyecto empieza con una idea.</p></div><div class="avatar">◎</div></header><section class="goal-hero card"><div class="hero-copy"><p class="eyebrow">TUS PROYECTOS</p><h2>Hacé lugar<br>para tus sueños.</h2><p>Guardá tus metas y volvé a verlas cuando quieras.</p></div><div class="hero-plant"><img class="plant-image" src="../assets/illustrations/planta-ahorro.svg" alt="Planta de metas"></div><img src="../assets/illustrations/dino-metas.png" class="dino-hero" alt=""></section><section class="section-bar"><div><p class="eyebrow">TUS PROYECTOS</p><h2>Metas activas</h2></div></section><form id="formMeta" class="goal-card card"><label for="nuevaMeta">Nueva meta</label><input id="nuevaMeta" name="descripcion" placeholder="¿Qué querés lograr?" required><button class="new-goal" type="submit">＋ Guardar meta</button><p id="mensaje" role="status"></p></form><section id="listaMetas" class="goal-grid" aria-live="polite"></section>
+        </main>
+    </div>
+    <script type="module" src="../js/banca.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>

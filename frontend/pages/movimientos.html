@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Movimientos</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/movimientos.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body hidden>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación principal">
+            <a class="brand" href="dashboard.html"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+            <nav class="menu">
+                <a class="menu-item" href="dashboard.html">⌂ <span>Inicio</span></a>
+                <a class="menu-item" href="transferir.html">⇄ <span>Transferir</span></a>
+                <a class="menu-item" href="ahorrar.html">↗ <span>Ahorrar</span></a>
+                <a class="menu-item" href="metas.html">◎ <span>Mis metas</span></a>
+                <a class="menu-item active" href="#movimientos">⌁ <span>Movimientos</span></a>
+                <a class="menu-item" href="configuracion.html">⚙ <span>Configuración</span></a>
+            </nav>
+            <div class="sidebar-footer"><i></i> Todo en orden</div>
+        </aside>
+
+        <main id="movimientos" class="main-content">
+<header class="topbar"><div><a class="back-link" href="dashboard.html">← Volver al inicio</a><h1>Movimientos</h1><p>Revisá la actividad de tu cuenta simulada.</p></div><div class="avatar">⌁</div></header><section class="balance-card card"><div><p class="eyebrow">TU CUENTA</p><h2>Tu actividad, en un solo lugar</h2><p>Ingresos y transferencias simuladas.</p></div><img src="../assets/illustrations/dino-movimientos.png" alt=""></section><section class="toolbar"><div><p class="eyebrow">HISTORIAL</p><h2>Últimos movimientos</h2></div></section><section class="content-grid"><div id="listaMovimientos" class="movements-card card" aria-live="polite">Cargando…</div></section>
+        </main>
+    </div>
+    <script type="module" src="../js/banca.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>

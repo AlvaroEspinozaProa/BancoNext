@@ -1,0 +1,9 @@
+<!-- Logo vectorial de referencia para la maqueta DinBank. -->
+<svg width="244" height="56" viewBox="0 0 244 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">DinBank</title>
+  <desc id="desc">Símbolo verde con la letra D y el nombre DinBank.</desc>
+  <rect x="1" y="1" width="54" height="54" rx="17" fill="#20B875"/>
+  <path d="M17 14H28.5C38.7 14 45 20.1 45 28C45 35.9 38.7 42 28.5 42H17V14ZM25.2 20.8V35.2H28.2C33.5 35.2 36.5 32.5 36.5 28C36.5 23.5 33.5 20.8 28.2 20.8H25.2Z" fill="#0D2735"/>
+  <path d="M39.5 13.5C44 11.8 47.5 12.2 49.2 13.4C47.9 17 44.3 19.2 40.2 18.6C39.4 17.1 39.1 15.3 39.5 13.5Z" fill="#D8FFE9"/>
+  <text x="69" y="35" fill="#F4FFFA" font-family="Arial, sans-serif" font-size="29" font-weight="700" letter-spacing="-1.1">din<tspan fill="#76EDAF">bank</tspan></text>
+</svg>

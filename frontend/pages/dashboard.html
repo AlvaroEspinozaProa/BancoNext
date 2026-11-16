@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinBank — Inicio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="../css/pages/dashboard.css">
+    <link rel="stylesheet" href="../css/components/plantas.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <style>body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; } .text-button { text-decoration: none; }</style>
+</head>
+<body hidden>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Navegación principal">
+            <a class="brand" href="#inicio" aria-label="DinBank inicio"><img src="../assets/brand/logo-dinbank.svg" alt="DinBank"></a>
+
+            <nav class="menu">
+                <a class="menu-item active" href="#inicio">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM9 21v-7h6v7"/></svg>
+                    Inicio
+                </a>
+                <a class="menu-item" href="transferir.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h11M14 3l4 4-4 4M17 17H6M10 13l-4 4 4 4"/></svg>
+                    Transferir
+                </a>
+                <a class="menu-item" href="ahorrar.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V4M8 8c0-3 4-5 4-5s4 2 4 5c0 2-1.7 3.2-4 3.2S8 10 8 8Z"/><path d="M12 15c-2.5 0-4.5-1.5-4.5-3.5 2.7 0 4.5 1.5 4.5 3.5Zm0 0c2.5 0 4.5-1.5 4.5-3.5-2.7 0-4.5 1.5-4.5 3.5Z"/></svg>
+                    Ahorrar
+                </a>
+                <a class="menu-item" href="metas.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="m15 9 5-5"/></svg>
+                    Mis metas
+                </a>
+                <a class="menu-item" href="movimientos.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5m0 14h16M8 16v-4m4 4V8m4 8v-6"/></svg>
+                    Movimientos
+                </a>
+                <a class="menu-item" href="configuracion.html">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.1 2.1-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5v.2h-3v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1-2.1-2.1.1-.1A1.7 1.7 0 0 0 7 15a1.7 1.7 0 0 0-1.5-1h-.2v-3h.2A1.7 1.7 0 0 0 7 10a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2.1-2.1.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5v-.2h3v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1 2.1 2.1-.1.1A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.5 1h.2v3h-.2a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+                    Configuración
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="support-dot"></div>
+                <span>Todo en orden</span>
+            </div>
+        </aside>
+
+        <main id="inicio" class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow"><span id="fecha"></span></p>
+                    <h1>Hola, <span id="nombreUsuario">usuario</span> <span>✦</span></h1>
+                    <p class="welcome">Tu cuenta de DinBank.</p>
+                </div>
+                <div class="profile">
+                    <button class="icon-button" type="button" aria-label="Notificaciones">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 22h4"/></svg>
+                    </button>
+                    <div class="avatar" aria-label="Perfil" id="avatar">•</div>
+                </div>
+            </header>
+
+            <section class="balance-card card" aria-label="Resumen de saldo">
+                <div class="balance-copy">
+                    <div class="card-label"><span class="live-dot"></span>CUENTA PRINCIPAL</div>
+                    <p class="balance-title">Saldo simulado disponible</p>
+                    <p class="balance-amount"><span id="saldoUsuario">—</span></p>
+                    <div class="account-details">
+                        <span>Cuenta: <strong id="numeroCuenta">—</strong></span>
+                        <button id="cerrarSesion" type="button">Cerrar sesión</button>
+                    </div>
+                </div>
+                <div class="balance-orbit orbit-one"></div>
+                <div class="balance-orbit orbit-two"></div>
+                <img class="dino-hero" src="../assets/illustrations/dino-dinbank.png" alt="Dino, la mascota de DinBank, saludando">
+            </section>
+
+            <form id="formDeposito" class="deposito card"><label for="deposito">Depositar dinero simulado</label><input id="deposito" name="monto" type="number" min="0.01" max="9999999999.99" step="0.01" required><button type="submit">Depositar</button><span id="mensaje" role="status"></span></form>
+            <section class="quick-actions" aria-label="Accesos principales">
+                <a class="action-card" href="metas.html">
+                    <span class="action-icon goal-icon">◎</span>
+                    <span><strong>Metas</strong><small>Organizá tus sueños</small></span>
+                    <b>→</b>
+                </a>
+                <a class="action-card" href="ahorrar.html">
+                    <span class="action-icon save-icon">↗</span>
+                    <span><strong>Ahorrar</strong><small>Hacé crecer tu plata</small></span>
+                    <b>→</b>
+                </a>
+                <a class="action-card" href="transferir.html">
+                    <span class="action-icon transfer-icon">⇄</span>
+                    <span><strong>Transferir</strong><small>En segundos</small></span>
+                    <b>→</b>
+                </a>
+            </section>
+
+            <section class="dashboard-grid">
+                <article class="growth-card card">
+                    <div class="section-heading"><div><p class="card-label">PROYECCIÓN</p><h2>Crecimiento de tu ahorro</h2></div></div>
+                    <div class="plant-scene"><img class="plant-image" src="../assets/illustrations/planta-ahorro.svg" alt="Planta de ahorro"></div>
+                    <div class="growth-footer"><div><span>Proyección a 12 meses</span><strong id="proyeccion">Sin proyección</strong></div><a class="text-button" href="ahorrar.html">Calcular →</a></div>
+                </article>
+
+                <article id="metas" class="goal-card card">
+                    <div class="section-heading"><div><p class="card-label">TUS METAS</p><h2>Mis proyectos</h2></div></div>
+                    <div class="plant-scene"><img class="plant-image" src="../assets/illustrations/planta-ahorro.svg" alt="Planta de ahorro"></div>
+                    <p class="goal-note" id="metaResumen">Todavía no tenés metas.</p><a class="text-button" href="metas.html">Ver metas →</a>
+                </article>
+            </section>
+
+            <section id="movimientos" class="movements card">
+                <div class="section-heading">
+                    <div><p class="card-label">ACTIVIDAD RECIENTE</p><h2>Últimos movimientos</h2></div>
+                    <a class="text-button" href="movimientos.html">Ver todos</a>
+                </div>
+                <div class="movement-list" id="listaMovimientos"><p>Cargando movimientos…</p></div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="../js/banca.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="../js/animaciones.js"></script>
+</body>
+</html>
