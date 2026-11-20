@@ -14,7 +14,7 @@ python -m http.server 8000
 
 Si en Windows `python` no funciona, probá `py -m http.server 8000`. Abrí **http://localhost:8000/frontend/** en el navegador y dejá la terminal abierta. No abras `index.html` con doble clic: la aplicación necesita servirse por HTTP para cargar sus módulos.
 
-El archivo `frontend/js/supabase-config.js` ya contiene la URL y la clave publicable del proyecto configurado. Ingresá con un usuario creado en Supabase Authentication; la aplicación no registra usuarios desde la página. El administrador puede crear usuarios en **Authentication > Users**, con el correo confirmado según la configuración del proyecto.
+El archivo `frontend/js/supabase-config.js` ya contiene la URL y la clave publicable del proyecto configurado. Desde la pantalla de ingreso podés crear una cuenta con nombre, correo y contraseña. Supabase Auth administra las contraseñas y crea el perfil y la cuenta simulada. Para ingresar inmediatamente después del registro, desactivá **Confirm email** en el proveedor Email de Supabase Authentication; esto permite crear cuentas sin comprobar la titularidad del correo. Si está activado, habrá que confirmar el correo antes de ingresar y configurar la URL de redirección en Supabase.
 
 Para usar otro proyecto, cambiá la URL y la clave publicable en ese archivo; podés tomar como referencia `frontend/js/supabase-config.example.js`. Estos valores son visibles en el navegador y en GitHub Pages. Usá únicamente una clave **publishable** o `anon`, nunca una clave `secret`, `service_role` ni contraseñas. La protección de los datos depende de las políticas RLS de Supabase. [Documentación de claves de Supabase](https://supabase.com/docs/guides/getting-started/api-keys).
 
@@ -37,7 +37,7 @@ El flujo publica solamente `frontend/`, por lo que `index.html` queda en la raí
 
 ## Preparar otro proyecto Supabase
 
-En un proyecto nuevo ejecutá desde SQL Editor, en este orden: `supabase/schema.sql`, `supabase/banca_simulada.sql` y `supabase/numeros_cuenta.sql`. Después creá los usuarios. Las cuentas comienzan con saldo cero; los movimientos históricos de `dinbank_movimientos` permanecen separados y no se convierten en saldo. Consultá [la guía de Supabase](docs/SUPABASE_TUTORIAL.md).
+En un proyecto nuevo ejecutá desde SQL Editor, en este orden: `supabase/schema.sql`, `supabase/banca_simulada.sql` y `supabase/numeros_cuenta.sql`. Habilitá el registro por correo en Authentication y revisá la configuración de confirmación y redirecciones de Supabase. Las cuentas comienzan con saldo cero; los movimientos históricos de `dinbank_movimientos` permanecen separados y no se convierten en saldo. Consultá [la guía de Supabase](docs/SUPABASE_TUTORIAL.md).
 
 ## Pruebas
 
@@ -45,6 +45,7 @@ En un proyecto nuevo ejecutá desde SQL Editor, en este orden: `supabase/schema.
 python -m unittest discover backend_calculos/tests
 node frontend/tests/ahorro.test.cjs
 node frontend/tests/login.test.cjs
+node frontend/tests/registro.test.cjs
 ```
 
 En un proyecto Supabase de prueba, `supabase/prueba_banca.sql` verifica cuentas y operaciones dentro de una transacción que termina en rollback. Las pruebas locales no sustituyen una prueba de ingreso y operaciones con usuarios reales de prueba.

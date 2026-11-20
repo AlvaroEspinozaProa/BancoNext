@@ -1,0 +1,32 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
+const path = require('node:path');
+const source = fs.readFileSync(path.join(__dirname, '../js/registro.js'), 'utf8')
+    .replace('import { obtenerSupabase } from "./supabase.js";', '');
+const mensaje = { textContent: '' }, boton = { disabled: false };
+const form = { elements: { nombre: { value: ' Ana ' }, email: { value: ' ana@example.com ' }, password: { value: 'clave123' }, confirmacion: { value: 'otra' } }, querySelector: () => boton, addEventListener() {}, reset() {} };
+let llamada, respuesta = { data: { session: null }, error: null }, destino;
+const context = { document: { getElementById: id => id === 'registroForm' ? form : mensaje }, obtenerSupabase: async () => ({ auth: { signUp: async datos => { llamada = datos; return respuesta; } } }), window: { location: { assign: url => { destino = url; } } } };
+vm.createContext(context);
+vm.runInContext(source, context);
+const enviar = () => context.registrar({ preventDefault() {}, currentTarget: form });
+(async () => {
+    await enviar();
+    assert.match(mensaje.textContent, /no coinciden/);
+    assert.equal(llamada, undefined);
+    form.elements.confirmacion.value = 'clave123';
+    await enviar();
+    assert.equal(llamada.email, 'ana@example.com');
+    assert.equal(llamada.options.data.nombre, 'Ana');
+    assert.match(mensaje.textContent, /correo/);
+    assert.equal(boton.disabled, false);
+    respuesta = { data: { session: {} }, error: null };
+    await enviar();
+    assert.equal(destino, 'pages/dashboard.html');
+    respuesta = { error: { code: 'user_already_exists' } };
+    await enviar();
+    assert.match(mensaje.textContent, /intentá ingresar/);
+    assert.equal(boton.disabled, false);
+    console.log('Prueba de registro: OK');
+})().catch(error => { console.error(error); process.exitCode = 1; });
