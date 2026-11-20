@@ -5,12 +5,16 @@ document.getElementById("registroForm").addEventListener("submit", registrar);
 async function registrar(event) {
     event.preventDefault();
     const formulario = event.currentTarget;
-    const { nombre, email, password, confirmacion } = formulario.elements;
+    const { nombre, apellido, email, password, confirmacion } = formulario.elements;
     const mensaje = document.getElementById("mensajeRegistro");
     const boton = formulario.querySelector('button[type="submit"]');
     mensaje.textContent = "";
     if (!nombre.value.trim()) {
         mensaje.textContent = "Ingresá tu nombre.";
+        return;
+    }
+    if (!apellido.value.trim()) {
+        mensaje.textContent = "Ingresá tu apellido.";
         return;
     }
     if (password.value !== confirmacion.value) {
@@ -24,7 +28,7 @@ async function registrar(event) {
         const { data, error } = await supabase.auth.signUp({
             email: email.value.trim(),
             password: password.value,
-            options: { data: { nombre: nombre.value.trim() } }
+            options: { data: { nombre: `${nombre.value.trim()} ${apellido.value.trim()}` } }
         });
         if (error) throw error;
         if (data.session) {
