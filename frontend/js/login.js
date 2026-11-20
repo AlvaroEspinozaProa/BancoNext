@@ -74,7 +74,9 @@ async function validarLogin(event) {
 
         window.location.assign("pages/dashboard.html");
     } catch (error) {
-        alert(error.message || "No se pudo conectar con el servidor.");
+        alert(error.name === "AuthRetryableFetchError" || /failed to fetch|networkerror|load failed/i.test(error.message || "")
+            ? "No se pudo conectar con Supabase. Revisá tu conexión a internet y que el proyecto esté activo."
+            : error.message || "No se pudo conectar con el servidor.");
     } finally {
         botonIngresar.disabled = false;
     }
