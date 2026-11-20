@@ -5,7 +5,7 @@ const path = require('node:path');
 const source = fs.readFileSync(path.join(__dirname, '../js/registro.js'), 'utf8')
     .replace('import { obtenerSupabase } from "./supabase.js";', '');
 const mensaje = { textContent: '' }, boton = { disabled: false };
-const form = { elements: { nombre: { value: ' Ana ' }, email: { value: ' ana@example.com ' }, password: { value: 'clave123' }, confirmacion: { value: 'otra' } }, querySelector: () => boton, addEventListener() {}, reset() {} };
+const form = { elements: { nombre: { value: ' Ana ' }, email: { value: ' ana@example.com ' }, password: { value: 'clave123' }, confirmacion: { value: 'otra', focus() {} } }, querySelector: () => boton, addEventListener() {}, reset() {} };
 let llamada, respuesta = { data: { session: null }, error: null }, destino;
 const context = { document: { getElementById: id => id === 'registroForm' ? form : mensaje }, obtenerSupabase: async () => ({ auth: { signUp: async datos => { llamada = datos; return respuesta; } } }), window: { location: { assign: url => { destino = url; } } } };
 vm.createContext(context);
@@ -26,7 +26,16 @@ const enviar = () => context.registrar({ preventDefault() {}, currentTarget: for
     assert.equal(destino, 'pages/dashboard.html');
     respuesta = { error: { code: 'user_already_exists' } };
     await enviar();
-    assert.match(mensaje.textContent, /intentá ingresar/);
+    assert.match(mensaje.textContent, /ya está registrado/);
+    respuesta = { error: { code: "email_address_invalid" } };
+    await enviar();
+    assert.match(mensaje.textContent, /dominio real/);
+    respuesta = { error: { code: "weak_password" } };
+    await enviar();
+    assert.match(mensaje.textContent, /contraseña no cumple/);
+    respuesta = { error: { status: 429 } };
+    await enviar();
+    assert.match(mensaje.textContent, /demasiados intentos/);
     assert.equal(boton.disabled, false);
     console.log('Prueba de registro: OK');
 })().catch(error => { console.error(error); process.exitCode = 1; });
